@@ -13,22 +13,22 @@ class App extends Component {
   state = { messages: [], newMessage: "", name: "", messageError: false };
 
   // Declare an EventSource
-  eventSource = new EventSource("http://localhost:3000/stream");
+  eventSource = new EventSource("http://10.0.2.98:3000/stream");
 
   componentDidMount() {
-    // Handler for events without an event type specified
-    this.eventSource.onmessage = e => {
-      const newMessageObj = JSON.parse(e.data);
-      const newMessage = {
-        ...newMessageObj,
-        time: Date(e.timeStamp)
-      };
-      this.setState({ messages: [newMessage, ...this.state.messages] });
-    };
-
     this.eventSource.onopen = e => {
       console.log("Connected to the event server");
     };
+
+    this.eventSource.onmessage = e => {
+      const newMessage = JSON.parse(e.data);
+      this.setState({ messages: [newMessage, ...this.state.messages] });
+    };
+
+    this.eventSource.addEventListener("initialMessages", e => {
+      const newMessagesObj = JSON.parse(e.data);
+      this.setState({ messages: newMessagesObj });
+    });
   }
 
   componentWillUnmount() {
@@ -42,7 +42,7 @@ class App extends Component {
     } else {
       axios
         .post(
-          "http://localhost:3000/message",
+          "http://10.0.2.98:3000/message",
           `message=${this.state.newMessage}&name=${this.state.name}`
         )
         .then(() => {
@@ -59,6 +59,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <AppWrapper>
         <SideBar>
@@ -76,7 +77,7 @@ class App extends Component {
           <SubmitButton onClick={this.handleSubmit}>Send Tweet</SubmitButton>
         </SideBar>
         <MessagesContainer>
-          {this.state.messages.map(({ message, user, time }, idx) => (
+          {this.state.messages.map(({ message, user, timeStamp }, idx) => (
             <Message key={message | idx}>
               <div style={{ paddingBottom: "10px" }}>
                 <span style={{ fontSize: "14px", fontWeight: 600 }}>
@@ -91,7 +92,7 @@ class App extends Component {
                   paddingTop: "10px"
                 }}
               >
-                {time}
+                {Date(timeStamp)}
               </div>
             </Message>
           ))}

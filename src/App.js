@@ -13,7 +13,7 @@ class App extends Component {
   state = { messages: [], newMessage: "", name: "", messageError: false };
 
   // Declare an EventSource
-  eventSource = new EventSource("http://10.0.2.98:3000/stream");
+  eventSource = new EventSource("http://localhost:3000/stream");
 
   componentDidMount() {
     this.eventSource.onopen = e => {
@@ -37,12 +37,11 @@ class App extends Component {
 
   handleSubmit = e => {
     if (this.state.newMessage === "") {
-      console.log("empty");
       this.setState({ messageError: true });
     } else {
       axios
         .post(
-          "http://10.0.2.98:3000/message",
+          "http://localhost:3000/message",
           `message=${this.state.newMessage}&name=${this.state.name}`
         )
         .then(() => {

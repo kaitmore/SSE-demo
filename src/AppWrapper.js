@@ -19,7 +19,7 @@ const AppWrapper = styled.div`
   height: 100vh;
   width: 100%;
   flex-wrap: wrap;
-
+  overflow: hidden;
   :after {
     content: "";
     bottom: 0;

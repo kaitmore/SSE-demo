@@ -7,6 +7,8 @@ injectGlobal`
   body {
     margin: 0;
     padding: 0;
+    background-color: #fcfcfc;
+
   }
 `;
 
@@ -20,6 +22,7 @@ const AppWrapper = styled.div`
   width: 100%;
   flex-wrap: wrap;
   overflow: hidden;
+  background-color: white;
   :after {
     content: "";
     bottom: 0;

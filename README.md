@@ -1,7 +1,9 @@
-## SSE-client
+## SSE Demo
 
-First clone the server repo:
+This is a demo of a very basic twitter clone that implements server sent events. To try it out:
 
-`git clone https://github.com/kaitmore/SSE-server`
+`git clone https://github.com/kaitmore/SSE-demo`
+`npm install`
+`npm start`
 
-Then run `npm start` to start the client locally
+Visit http://localhost:3000

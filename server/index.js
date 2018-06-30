@@ -5,7 +5,22 @@ const bodyParser = require("body-parser");
 const app = express();
 
 let connections = [];
-let messages = [];
+let messages = [
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() },
+  { message: "Hey", user: "Kaitlin Moreno", timeStamp: Date.now() }
+];
 
 app.use(bodyParser.urlencoded({ extended: false }));
 

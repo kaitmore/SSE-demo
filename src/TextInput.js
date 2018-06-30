@@ -7,7 +7,6 @@ const TextInput = styled.textarea.attrs({
   padding: 20px;
   margin: 10px 0;
   border-radius: 5px;
-  width: 300px;
   font-size: 14px;
   font-family: Avenir;
   border: 1px solid ${props => (props.messageError ? "#e82929" : "#5bc94a")};

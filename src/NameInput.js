@@ -7,7 +7,6 @@ const NameInput = styled.input.attrs({
   padding: 10px 20px;
   margin: 10px 0 0;
   border-radius: 5px;
-  width: 300px;
   font-size: 14px;
   font-family: Avenir;
   border: 1px solid #5bc94a;

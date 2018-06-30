@@ -1,15 +1,18 @@
 {
-  "name": "sse-client",
+  "name": "sse-demo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start & npm run start-server",
+    "start-server": "nodemon server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

@@ -13,7 +13,7 @@ class App extends Component {
   state = { messages: [], newMessage: "", name: "", messageError: false };
 
   // Declare an EventSource
-  eventSource = new EventSource("http://localhost:1337/stream");
+  eventSource = new EventSource(`${process.env.SSE_SERVER}/stream`);
 
   componentDidMount() {
     this.eventSource.onopen = e => {
@@ -41,7 +41,7 @@ class App extends Component {
     } else {
       axios
         .post(
-          "http://localhost:1337/message",
+          `${process.env.SSE_SERVER}/message`,
           `message=${this.state.newMessage}&name=${this.state.name}`
         )
         .then(() => {

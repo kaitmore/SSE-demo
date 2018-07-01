@@ -16,6 +16,7 @@ class App extends Component {
   eventSource = new EventSource(`${process.env.SSE_SERVER}/stream`);
 
   componentDidMount() {
+    console.log(process.env.SSE_SERVER);
     this.eventSource.onopen = e => {
       console.log("Connected to the event server");
     };
